@@ -1,0 +1,16 @@
+.conatiner {
+  padding: 16px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.mdc-card {
+  justify-content: space-between !important;
+}

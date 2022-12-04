@@ -1,0 +1,70 @@
+<div class="conatiner">
+  <div class="cart_item">
+    <p *ngIf="isCartEmpty$ | async">Add item to cart</p>
+    <ng-container *ngFor="let item of cartItems$ | async">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title
+            >{{ item.product.title }} -
+            <span style="color: #673ab7"
+              >Price: {{ item.price }}</span
+            ></mat-card-title
+          >
+        </mat-card-header>
+        <div class="quantity">
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <mat-select
+              #quantity
+              [value]="item.quantity"
+              (selectionChange)="onQuantitySelection(item, $event.value)"
+            >
+              <mat-option
+                *ngFor="let quantity of [1, 2, 3, 4, 5, 6]"
+                [value]="quantity"
+              >
+                {{ quantity }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button
+            (click)="removeItem(item)"
+            mat-mini-fab
+            type="button"
+            color="warn"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    </ng-container>
+  </div>
+
+  <div class="cart_price">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Card Total</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="price_item text-light">
+          <p>SubTotal:</p>
+          <p>{{ subTotal$ | async | number: "1.2-2" }}</p>
+        </div>
+        <div class="price_item text-light">
+          <p>Delivery:</p>
+          <p>{{ deliveryFee$ | async | number: "1.2-2" }}</p>
+        </div>
+        <div class="price_item text-light">
+          <p>Estimated Tax(G.S.T 18%):</p>
+          <p>{{ tax$ | async | number: "1.2-2" }}</p>
+        </div>
+        <div class="price_item">
+          <p><strong>Total:</strong></p>
+          <p>
+            <strong>{{ total$ | async | number: "1.2-2" }}</strong>
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

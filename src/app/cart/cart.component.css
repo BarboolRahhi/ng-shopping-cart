@@ -1,0 +1,30 @@
+.conatiner {
+  padding: 16px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 380px;
+}
+
+.price_item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart_item mat-card {
+  padding: 8px;
+  margin-bottom: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  flex-direction: row;
+}
+
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
